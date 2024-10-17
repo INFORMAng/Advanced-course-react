@@ -1,6 +1,7 @@
 
-const EventPage = () => {
 
+const EventPage = () => {
+  
   return (
     <div>
       EventPage

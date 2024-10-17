@@ -1,12 +1,23 @@
-import {memo, Suspense, useCallback} from 'react'
+import {memo, Suspense, useCallback, useEffect} from 'react'
 import {Route, RouteProps, Routes} from 'react-router-dom'
-import { getAuth } from '../store/selectors/authSelectors'
+import { getAuthState } from '../store/selectors/authSelectors'
 import { StateSchema } from '../store/config/stateChema'
 import { useSelector } from 'react-redux'
 import { privateRouteConfig, publicRouteConfig } from '../router/routeConfig'
+import { LOCAL_STORAGE_KEYS } from '../helpers/lib/localStorage'
+import { useAppDispatch } from '../helpers/hooks/useAppDispatch'
+import { setAuth } from '../store/slices/authSlice'
 
 const AppRouter = () => {
-    const isAuth = useSelector((state: StateSchema) => getAuth(state))
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        if (localStorage.getItem(LOCAL_STORAGE_KEYS.AUTH)) {
+            dispatch(setAuth())
+        }
+    }, [])
+
+    const {auth: isAuth} = useSelector((state: StateSchema) => getAuthState(state))
     const routeConfig = isAuth ? privateRouteConfig : publicRouteConfig
 
     const renderWithWrapper = useCallback((route: RouteProps) => {
