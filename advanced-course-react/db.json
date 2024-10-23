@@ -15,5 +15,28 @@
       "username": "aider",
       "password": "3695"
     }
+  ],
+  "events": [
+    {
+      "id": "2a4e6474-07e2-4120-acf6-df2f5bb5c284",
+      "author": "aider",
+      "guest": "",
+      "data": "2024.10.25",
+      "description": "Работа"
+    },
+    {
+      "id": "66cb0ceb-c5ab-4304-b5c5-83b78241fe45",
+      "author": "aider",
+      "guest": "",
+      "data": "2024.10.25",
+      "description": "Учёба"
+    },
+    {
+      "id": "bba9a3af-e238-40ff-8e43-8edf9f34b5e5",
+      "author": "aider",
+      "guest": "",
+      "data": "2024.10.25",
+      "description": "Коддинг"
+    }
   ]
 }

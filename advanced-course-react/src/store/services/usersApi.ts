@@ -3,7 +3,7 @@ import { IUser } from "../../types/usersTypes";
 
 const usersApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUsers: builder.query<IUser[], null>({
+    getUsers: builder.query<IUser[], void>({
       query: () => ({
         url: '/users'
       }),

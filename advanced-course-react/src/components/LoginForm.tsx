@@ -8,12 +8,6 @@ import { useSelector } from "react-redux";
 import { StateSchema } from "../store/config/stateChema";
 import { getAuthState } from "../store/selectors/authSelectors";
 
-type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
-};
-
 const LoginForm = () => {
   const {data: users} = useGetUsers(null)
   const {isLoading} = useSelector((state: StateSchema) => getAuthState(state))
@@ -36,7 +30,7 @@ const LoginForm = () => {
           initialValues={{ remember: true }}
           autoComplete="off"
         >
-          <Form.Item<FieldType>
+          <Form.Item
             label="Логин"
             name="username"
             rules={[rules.required('Пожалуйста введите логин!')]}
@@ -44,7 +38,7 @@ const LoginForm = () => {
             <Input onChange={event => setUsername(event.target.value)}/>
           </Form.Item>
 
-          <Form.Item<FieldType>
+          <Form.Item
             label="Пароль"
             name="password"
             rules={[rules.required('Пожалуйста введите пароль!')]}

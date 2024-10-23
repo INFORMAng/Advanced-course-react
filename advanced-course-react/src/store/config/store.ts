@@ -1,10 +1,14 @@
 import { StateSchema } from './stateChema';
 import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
-import authReducer from '../slices/authSlice'
 import { rtkApi } from '../../API/rtkApi';
+import authReducer from '../slices/authSlice'
+import usersReducer from '../slices/usersSlice'
+import eventsReducer from '../slices/eventsSlice'
 
 const rootReducers: ReducersMapObject<StateSchema> = {
   auth: authReducer,
+  users: usersReducer,
+  events: eventsReducer,
   [rtkApi.reducerPath]: rtkApi.reducer,
 }
 
