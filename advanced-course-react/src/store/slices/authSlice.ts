@@ -3,14 +3,14 @@ import { IUser } from "../../types/usersTypes";
 import { removeUserAuthFromLocalStorage, saveUserAuthToLocalStorage } from "../../helpers/lib/localStorage";
 import toastr from "../../helpers/hooks/constants/toastrConfig";
 
-export interface AuthState {
+export interface AuthScheme {
   user: IUser
   auth: boolean;
   isLoading: boolean;
   error: string;
 }
 
-const initialState: AuthState = {
+const initialState: AuthScheme = {
   user: {} as IUser,
   auth: false,
   isLoading: false,
@@ -42,8 +42,12 @@ const authSlice = createSlice({
 
       removeUserAuthFromLocalStorage()
     },
-    setAuth: (state) => {
+    setAuth: (state, action: PayloadAction<string | null>) => {
       state.auth = true
+
+      if(action.payload) {
+        state.user.username = action.payload
+      }
     }
   }
 })

@@ -3,7 +3,7 @@ import { BASE_URL } from "../helpers/hooks/constants/api";
 
 export const rtkApi = createApi({
   reducerPath: 'api',
-  tagTypes: ['users'],
+  tagTypes: ['users', 'events'],
   baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
   endpoints: () => ({})
 })

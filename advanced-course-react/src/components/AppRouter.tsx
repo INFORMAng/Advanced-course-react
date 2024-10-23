@@ -13,9 +13,10 @@ const AppRouter = () => {
 
     useEffect(() => {
         if (localStorage.getItem(LOCAL_STORAGE_KEYS.AUTH)) {
-            dispatch(setAuth())
+            const username = localStorage.getItem(LOCAL_STORAGE_KEYS.USERNAME)
+            dispatch(setAuth(username))
         }
-    }, [])
+    }, [dispatch])
 
     const {auth: isAuth} = useSelector((state: StateSchema) => getAuthState(state))
     const routeConfig = isAuth ? privateRouteConfig : publicRouteConfig
